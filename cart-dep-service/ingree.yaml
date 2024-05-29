@@ -10,8 +10,10 @@ spec:
   - host: project-lb-395642569.ap-northeast-1.elb.amazonaws.com
     http:
       paths:
-        - path: /gatway
+        - path: /cart
           backend:
-            serviceName: gatway-service
-            servicePort: 8080
+            service:
+              name: cart-service
+              port:
+                number: 8080
         

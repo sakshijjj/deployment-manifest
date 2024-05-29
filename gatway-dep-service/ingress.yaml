@@ -12,6 +12,8 @@ spec:
       paths:
         - path: /gatway
           backend:
-            serviceName: gatway-service
-            servicePort: 8080
+           service:
+             name: gatway-service
+            port:
+              number: 8080
         

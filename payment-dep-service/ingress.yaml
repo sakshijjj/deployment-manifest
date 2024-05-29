@@ -10,8 +10,11 @@ spec:
   - host: project-lb-395642569.ap-northeast-1.elb.amazonaws.com
     http:
       paths:
-        - path: /stage
-          backend:
-            serviceName: payment-service
-            servicePort: 8080
-        
+       - path: /stage
+         pathType: Prefix
+         backend:
+           service:
+             name: payment-service
+            port:
+              number: 8080
+      
