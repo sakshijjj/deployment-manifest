@@ -14,6 +14,6 @@ spec:
           backend:
             service:
               name: cart-service
-              port:
-                number: 8080
+            port:
+              number: 8080
         
