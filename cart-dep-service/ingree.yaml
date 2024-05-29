@@ -4,13 +4,12 @@ metadata:
   name: file-ingress-3
   annotations:
     # Load Balancer Name
-    alb.ingress.kubernetes.io/load-balancer-name: project-lb-3
+    alb.ingress.kubernetes.io/load-balancer-name: project-lb
     ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: my-aws-ingress-class   # Ingress Class                       
   rules:
-    - host: project-lb-395642569.ap-northeast-1.elb.amazonaws.com
-      http:
+    - http:
         paths:           
           - path: /cart
             pathType: Prefix
