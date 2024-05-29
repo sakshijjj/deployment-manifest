@@ -3,18 +3,21 @@ kind: Ingress
 metadata:
   name: file-ingress-1
   annotations:
+    # Load Balancer Name
+    alb.ingress.kubernetes.io/load-balancer-name: project-lb-1 
     ingress.kubernetes.io/rewrite-target: /
-    alb.ingress.kubernetes.io/load-balancer-name: project-lb-1
 spec:
+  ingressClassName: my-aws-ingress-class   # Ingress Class                       
   rules:
-  - host: project-lb-395642569.ap-northeast-1.elb.amazonaws.com
-    http:
-      paths:
-       - path: /stage
-         pathType: Prefix
-         backend:
-            service:
-              name: payment-service
-            port:
-              number: 8080
-      
+    - host: project-lb-395642569.ap-northeast-1.elb.amazonaws.com
+      http:
+        paths:           
+          - path: /stage
+            pathType: Prefix
+            backend:
+              service:
+                name: payment-service
+                port: 
+                  number: 8080
+                       
+             
