@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: file-ingress-2
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+    alb.ingress.kubernetes.io/load-balancer-name: project-lb-2
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /gatway
+          backend:
+            serviceName: gatway-service
+            servicePort: 8080
+        
