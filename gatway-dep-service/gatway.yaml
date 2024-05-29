@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: gatway-service
-          image: 923975749308.dkr.ecr.ap-northeast-1.amazonaws.com/gatway-service:1.0.8
+          image: 923975749308.dkr.ecr.ap-northeast-1.amazonaws.com/gatway-service:IMAGE
           ports:
             - containerPort: 8080
 ---

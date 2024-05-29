@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: cart-service
-          image: 923975749308.dkr.ecr.ap-northeast-1.amazonaws.com/cart-service:1.0.1S
+          image: 923975749308.dkr.ecr.ap-northeast-1.amazonaws.com/cart-service:IMAGE
           ports:
             - containerPort: 8080
 ---
