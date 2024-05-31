@@ -26,9 +26,9 @@ metadata:
   name: payment-service
   labels:
     app: payment-service
-  annotations:
-    alb.ingress.kubernetes.io/healthcheck-path: /stage
-    alb.ingress.kubernetes.io/backend-protocol: HTTP
+  # annotations:
+  #   alb.ingress.kubernetes.io/healthcheck-path: /stage
+  #   alb.ingress.kubernetes.io/backend-protocol: HTTP
 spec:
   selector:
     app: payment-service
