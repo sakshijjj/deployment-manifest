@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: gatway-service
-          image: 923975749308.dkr.ecr.ap-northeast-1.amazonaws.com/gatway-service:IMAGE
+          image: 923975749308.dkr.ecr.ap-northeast-1.amazonaws.com/gatway-service:1.0.9
           ports:
             - containerPort: 8080
 ---
@@ -29,6 +29,7 @@ metadata:
   annotations:
 #Important Note:  Need to add health check path annotations in service level if we are planning to use multiple targets in a load balancer    
     alb.ingress.kubernetes.io/healthcheck-path: /gatway
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
 spec:
   selector:
     app: gatway-service

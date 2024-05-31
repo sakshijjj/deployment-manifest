@@ -1,12 +1,16 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: pay-ingress
+  name: stag-ingress
   namespace: default
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     alb.ingress.kubernetes.io/scheme: internet-facing  
     alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/load-balancer-name: ingress-groups-demo
+    alb.ingress.kubernetes.io/group.name: myapps.web
+    alb.ingress.kubernetes.io/group.order: '30'
+
 spec:
   ingressClassName: my-aws-ingress-class
   rules:

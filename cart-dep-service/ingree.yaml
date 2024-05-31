@@ -6,6 +6,10 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
     alb.ingress.kubernetes.io/scheme: internet-facing  
     alb.ingress.kubernetes.io/target-type: ip 
+    alb.ingress.kubernetes.io/load-balancer-name: ingress-groups-demo
+    alb.ingress.kubernetes.io/group.name: myapps.web
+    alb.ingress.kubernetes.io/group.order: '20'
+
 spec:
   ingressClassName: my-aws-ingress-class   # Ingress Class                       
   rules:
@@ -18,6 +22,20 @@ spec:
                 name: cart-service
                 port: 
                   number: 8080
+          # - path: /stage
+          #   pathType: Prefix
+          #   backend:
+          #     service:
+          #       name: payment-service
+          #       port:
+          #         number: 8080 
+          # - path: /gatway
+          #   pathType: Prefix
+          #   backend:
+          #     service:
+          #       name: payment-service
+          #       port:
+          #         number: 8080                 
                        
              
 
