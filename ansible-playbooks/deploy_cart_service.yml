@@ -1,0 +1,35 @@
+---
+- name: Deploy Cart Service
+  hosts: all
+  become: true
+  vars:
+    deployment_file: "cart-dep-service/cart.yaml"
+    new_image_tag: "{{ new_image_tag }}"
+  tasks:
+    - name: Verify the deployment file exists
+      stat:
+        path: "{{ deployment_file }}"
+      register: deployment_file_exists
+
+    - name: Fail if deployment file does not exist
+      fail:
+        msg: "Deployment file {{ deployment_file }} does not exist."
+      when: not deployment_file_exists.stat.exists
+
+    - name: Update the image tag in the deployment file
+      replace:
+        path: "{{ deployment_file }}"
+        regexp: '923975749308.dkr.ecr.ap-northeast-1.amazonaws.com/cart-service:IMAGE'
+        replace: "923975749308.dkr.ecr.ap-northeast-1.amazonaws.com/cart-service:{{ new_image_tag }}"
+
+    - name: Apply the Kubernetes deployment file
+      command: kubectl apply -f "{{ deployment_file }}"
+    
+    - name: Apply all configurations in the directory
+      command: kubectl apply -f cart-dep-service/
+
+    - name: Get Kubernetes ingress
+      command: kubectl get ingress
+    
+    - name: Get all Kubernetes resources
+      command: kubectl get all
